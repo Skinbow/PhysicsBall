@@ -9,7 +9,7 @@ boolean frame = true;
 
 void setup() {
   size(800, 600);
-  
+
   BallRadius = 5;
   BallX = 400;
   BallY = height - BallRadius;
@@ -19,7 +19,7 @@ void setup() {
   YPull = 0;
   accelX = 0.4;
   accelY = 0.5;
-  
+
   background(255);
   noStroke();
   fill(0);
@@ -33,13 +33,13 @@ void draw() {
     noStroke();
     ellipse(BallX, BallY, 2*BallRadius, 2*BallRadius);
     stroke(0);
-    line(BallX, BallY, BallX + 10*XPull, BallY + 10*YPull);
+    //line(BallX, BallY, BallX + 10*XPull, BallY + 10*YPull);
   }
   PBallX = BallX;
   PBallY = BallY;
   BallX += XPull;
   BallY += YPull;
-  
+
   if (BallX < BallRadius) {
     BallX = BallRadius;
     XPull /= -BounceLoss;
@@ -48,12 +48,12 @@ void draw() {
     BallX = width - BallRadius;
     XPull /= -BounceLoss;
   }
-  
+
   XPull /= AirFrict;
   YPull /= AirFrict;
   if (BallY == height - BallRadius) XPull /= RollLoss;
   if (abs(XPull) < 10e-3) XPull = 0;
-  
+
   if (jump) {
     if (BallY > height - BallRadius) {
       BallY = height - BallRadius;
